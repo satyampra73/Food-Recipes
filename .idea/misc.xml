@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Studio_Projects/New_Android_Projects/FoodRecipes/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.24" />
         <entry key="..\:/Android_Studio_Projects/New_Android_Projects/FoodRecipes/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android_Studio_Projects/New_Android_Projects/FoodRecipes/app/src/main/res/layout/list_random_recipe.xml" value="0.26510416666666664" />
         <entry key="..\:/Android_Studio_Projects/New_Android_Projects/FoodRecipes/app/src/main/res/layout/spinner_inner_text.xml" value="0.22927927927927927" />

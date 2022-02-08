@@ -1,6 +1,7 @@
 package com.satyampra.foodrecipes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog dialog;
     RequestManager manager;
     Spinner spinner;
+    SearchView searchView;
     RandomRecipeAdapter randomRecipeAdapter;
     RecyclerView recyclerView;
     List<String> tags=new ArrayList<>();
@@ -32,7 +34,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycler_random);
+        searchView =findViewById(R.id.SearchView_home);
         spinner=findViewById(R.id.spinner_tags);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                tags.clear();
+                tags.add(query);
+                manager.getRandomRecipes(randomRecipeResponseListener,tags);
+                dialog.show();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
         dialog = new ProgressDialog(this);
         dialog.setTitle("Loading...");
 
@@ -45,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(spinnerSelectedListener);
         manager = new RequestManager(this);
-//        manager.getRandomRecipes(randomRecipeResponseListener);
-//        dialog.show();
 
     }
 
